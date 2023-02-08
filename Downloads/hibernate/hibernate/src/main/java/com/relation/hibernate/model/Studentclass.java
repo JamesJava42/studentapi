@@ -31,6 +31,12 @@ public class Studentclass {
 	private Clas clas;
 	
 	private int promotion;
+	@Column(name = "year")
+	private long year;
+	
+	@Column(name = "stand")
+	private int stand;
+	
 	
 	
 //	@OneToMany(targetEntity = Marks.class,cascade = CascadeType.ALL)
@@ -46,6 +52,25 @@ public class Studentclass {
 //	public void setMarks(List<Marks> marks) {
 //		this.marks = marks;
 //	}
+	
+	
+	
+
+	public long getYear() {
+		return year;
+	}
+
+	public int getStand() {
+		return stand;
+	}
+
+	public void setStand(int stand) {
+		this.stand = stand;
+	}
+
+	public void setYear(long year) {
+		this.year = year;
+	}
 
 	public int getId() {
 		return id;

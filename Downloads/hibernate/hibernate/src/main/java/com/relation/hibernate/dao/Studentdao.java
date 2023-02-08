@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.relation.hibernate.model.Student;
 import com.relation.hibernate.view.Response;
 @Repository
-public interface Studentdao  extends JpaRepository<Student, Serializable>{
+public interface Studentdao  extends JpaRepository<Student, Integer>{
 	@Query(value =  "select s from Student s where s.sid = :id" )
 	public List<Student> getStudent( @Param("id") int id);
 	

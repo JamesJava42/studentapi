@@ -25,10 +25,13 @@ public class Marks {
 	private int sub2;
 	@Column(name="mat")
 	private int sub3;
-//	
-//	@Column(name="s_id")
-//	private int sid;
-//	
+	@Column(name = "year")
+	private long year;
+	@Column(name="s_id")
+	private int sid;
+	
+	@Column(name="standard")
+	private int standard;
 	
 	@ManyToOne(targetEntity = Student.class,cascade = CascadeType.ALL)
 	@JoinColumn(name = "s_fk_id",referencedColumnName = "s_id")
@@ -40,13 +43,49 @@ public class Marks {
 	
 	
 	
-//	public int getSid() {
-//		return sid;
-//	}
-//
-//	public void setSid(int sid) {
-//		this.sid = sid;
-//	}
+	
+	
+	
+	
+	public int getStandard() {
+		return standard;
+	}
+
+	public void setStandard(int standard) {
+		this.standard = standard;
+	}
+
+	public long getYear() {
+		return year;
+	}
+
+	public void setYear(long year) {
+		this.year = year;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+
+	public Clas getClas() {
+		return clas;
+	}
+
+	public void setClas(Clas clas) {
+		this.clas = clas;
+	}
+
+	public int getSid() {
+		return sid;
+	}
+
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
 
 	@Column(name="marks")
 	private double marks;
