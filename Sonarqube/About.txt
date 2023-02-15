@@ -1,0 +1,78 @@
+Softwere testing tool and fix error before deployment;
+What S/w testing: 
+          is a part of S/W  life cycle , Its aim to ensure the code to be deployed is of high quality with no bugs and no logical errors.
+          Make ensue the S/W is satisfied by customer so most of the time used in testing :
+          Clasification:
+          Types:
+             manual :
+                 developer use manualy way to test the code .
+             automatic:
+                 developer use the automated scripts to make the code pass through it.
+          Methods:
+              Static :
+              Dynamic:
+          Approaches:
+              Black: not know the internal structure of APP.
+              white: Known the IS
+              gray
+          Levels:
+             Unit:
+             Integration:
+             System:
+             Acceptence:
+ Diff Dynamic testing :
+      during the execution of the code . identify defects or vulnerabilites because looks at the integration with other services(DB..).
+      fund faults in specific codes during execution.
+      Ex:Selinum,capser JS,catelon
+    :
+    method of debugging by examining source code before programe is run(test the code with out execution). 
+    perform Analysis on code. to make hte standeds are meet .
+    Early testing , 
+    Ex: solarqube
+    resons:
+        Find errors earilier in developent 
+        Detects over-complexity in code 
+        Find Security errors              - makes source code be more secure when it get deployed
+        Enforces Best Coding Practices.   - Devs forget to follow the best standart practices it can solve .
+        Automated and Integrates in jenkins- Its waste of time to ask regularly to test the code we integrate s/w static testing tool 
+        can create project specific rules  - follows the rules on specifice work to follow.
+
+Technical debt:
+        It directly as the implied costs for additional rework that can occur if at an early stage an easy but not 
+        efficient solution is chosen. in, Future the easy code may restrict the scalability.
+        Ex: If we writes a simple code which tests all possible test-cses after deployment if we need to scale the project , Its hard to debug and reuse the old code .
+
+Sonarqube:
+    Its is S/W static testing tool,used by developer to manage the sourcecode quality and consistency.
+    Quality Checks :
+            Potential bugs  
+            code defects to design inefficiencies - not acurate to the efficiency
+            code duplication                      - excess code not in use
+            Lack of test coverage               
+            Excess complexity
+features:
+     work with 25+ diff languagrs:
+     Tricky Issues:
+           Detect bugs:
+           Code smells:  might be a problem in Future. (Technical Debt).
+           Security vulnerabilites:  can detect the security issues that a code may face(forget to close the connection in MySQL(DB)).
+           Activate Rules Needed:  crate and maintatin diff sets of rules are specific to projects know Quality Profiles.
+           Execution path:         there is a Data Flow(Code pipeline in a project) in your programe.lot of involvement b/w diffrent modules.SQ figer it out if there are any tricky bugs in these execution paths.
+
+    Enhanced Workflow:(CI/CD)
+           Automated Code Analysis:      keep working in backgroud from development phase itsself .Monetering anf Identifing the errors.
+           Get Access through Webhooks and API:      directly use SQ with API calls.
+           Integrated Github: directly integrated to git and find error in the versions 
+           Analyze the branches and Decorate pull requests:
+    Built-In Methodalgy:
+          Discovery memory leaks: Shows the memory leaks in applications, I dapp have tendency to fail or go out of memory. THis generally happens over a period of time
+          Good Visualizer:   Good ways visualizing the overall health of the code.
+          Enforces a quality gate :        It enforce a quality gate , tell SQ bsed on our reqirements and practices what is wrong and what is right.
+          Digs into issues:                It allows you to go and directly check it out from summary report or from one code file to another. 
+          plugins for IDE's:               SQ plugin(SonarLint) to integrate itself with the IDE. no need to install complete SQ package.
+
+How to Install 
+1>Install Docker and pull SQ image.
+setup SQ on the Browser
+Download sample COde and analyze it on SQ.
+

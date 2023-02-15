@@ -1,0 +1,57 @@
+AWS EC2 centos Instance:
+     Create 12month free tier from AWS. Lauch new EC2 instance with centos(Amazon Market Image-AMI).copy the public IP and download the public key from Instance creation.
+     we have 2 types of key pairs to downloads( putty  and open SSH). based on that work in it.
+     Putty:
+        Download Putty and connect to the centos instance with IP and key-pair file which we downloaded.
+Terminal:
+    wget: 
+        To install/ download any file from the links we use the wget cmd.
+        $yum install wget -y
+        $wget 3links 
+        $yum install 3 packages
+        $systemctl start docker
+        $systemctl status docker
+
+
+        $cd /opt
+        wget apche mavenlink
+        tar zxf <tarfile>
+
+        (java)
+    docker:
+    hub.docker.com --> explore --> docker EE -->Docker Enteprise centos. (1month free) -- >copy the linkof it;
+        pate the link in browser -->7 --> packages --> copy 3 links(.io,cli,ee) -- >use wget 
+        
+        $docker pull image sonarqube:latest
+        
+        $docker images
+
+        $docker run  -d container --name sonarqube -p 9000:9000 sonarqube:latest
+
+        $docker ps 
+
+        sonarqube:
+            in browser <ip_instace>:<port>
+            we get sonarqube webpage.
+            (git)
+            login -->set project,token --> copy the code -->set language ,build technology--> copy maven link
+            (wget) 
+    Java:
+       ym install -y java-1.8.0-openjdk-devel 
+       export PATH=$PATH:/opt/appachi/bin
+       (CHECK metadata--sonarproject.properties in project)
+       mvn compile
+       (sonarqube cmd) taken from the website.
+    mavenL: 
+        wget apachemavenlink 
+        cd /bin 
+        (java)
+       ./mvn version
+    git:
+       yum install git -y 
+       git clone http:***.git
+       sonarqube
+    project1:
+        
+    
+    
