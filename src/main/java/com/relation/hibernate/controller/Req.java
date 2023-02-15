@@ -44,28 +44,74 @@ public class Req {
 	
 	
 	
-	Logger o = LoggerFactory.getLogger(Req.class);
+	Logger objectMapper = LoggerFactory.getLogger(Req.class);
 	
-	@PostMapping("student")
-	public ResponseEntity<?> addStudent(@RequestBody Student s){
-		studentdao.save(s);
-		return new ResponseEntity<>("Sucessfull "+s.getSid(),HttpStatus.OK);
-		
-	}
+	
 	
 	
 	
 	@PostMapping("studentclas")
-	public ResponseEntity<?> addStudent(@RequestBody Studentclass s){
+	public ResponseEntity<?> addStudent(@RequestBody Studentclass studentClassBody){
 		/*
-		 * Studentclass sc = new Studentclass(); sc.setClas(s.getClas());
-		 * sc.setPromotion(s.getPromotion()); sc.setStudent(s.getStudent());
+		 * Studentclass sc = new Studentclass(); sc.setClas(studentClassBody.getClas());
+		 * sc.setPromotion(studentClassBody.getPromotion()); sc.setStudent(studentClassBody.getStudent());
 		 * sc.setId(0); scdao.save(sc);
 		 */
-		studentclassdao.save(s);
-		return new ResponseEntity<>("Sucessfull "+s.getId(),HttpStatus.OK);
+		studentclassdao.save(studentClassBody);
+		return new ResponseEntity<>("Sucessfull "+studentClassBody.getId(),HttpStatus.OK);
 		
 	}
+	
+	
+	
+	@PostMapping("marks/add")
+	public ResponseEntity<?> addMarks(@RequestBody Marks marks){
+		
+		double total = marks.getSub1()+marks.getSub2()+marks.getSub3();
+		marks.setMarks(total);
+		
+		float gpa = (float)total/10;
+		
+		
+		marks.setGpa(gpa);
+		objectMapper.info("The caluculated gpa :"+gpa);
+		
+		if(marks.getGpa() > 5.0) {
+			
+			int status = studentclassservice.getPromoted(marks.getSid());
+			if(status == 0) {
+				return new ResponseEntity<>("Student Record NotExists :",HttpStatus.OK);
+			}
+			
+			objectMapper.info("We are promoted the student based on gpa");
+			
+		}
+		objectMapper.info("after promoted");
+		//get the stand from 
+		
+		if(marksservice.getStudent(marks.getSid())) {
+			int stand = marksservice.getStandard(marks.getSid());
+			int prom = studentclassservice.getPromotion(marks.getSid());
+			marks.setStandard(prom);
+			objectMapper.info("we are updating the standard ");
+		}
+		//checking the student result and updating the promotion field
+		
+		
+		
+		
+		
+		marksdao.save(marks);
+		return new ResponseEntity<>("Marks added succesfull : "+marks.getMid(),HttpStatus.OK);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@PostMapping("class")
 	public ResponseEntity<?> addClass(@RequestBody Clas c){
@@ -74,50 +120,14 @@ public class Req {
 		
 	}
 	
-	@PostMapping("marks/add")
-	public ResponseEntity<?> addMarks(@RequestBody Marks m){
+	
+	
+	@PostMapping("student")
+	public ResponseEntity<?> addStudent(@RequestBody Student studentClassBody){
+		studentdao.save(studentClassBody);
+		return new ResponseEntity<>("Sucessfull "+studentClassBody.getSid(),HttpStatus.OK);
 		
-		double total = m.getSub1()+m.getSub2()+m.getSub3();
-		m.setMarks(total);
-		
-		float gpa = (float)total/10;
-		
-		
-		m.setGpa(gpa);
-		o.info("The caluculated gpa :"+gpa);
-		
-		if(m.getGpa() > 5.0) {
-			
-			int status = studentclassservice.getPromoted(m.getSid());
-			if(status == 0) {
-				return new ResponseEntity<>("Student Record NotExists :",HttpStatus.NOT_FOUND);
-			}
-			
-			o.info("We are promoted the student based on gpa");
-			
-		}
-		o.info("after promoted");
-		//get the stand from 
-		
-		if(marksservice.getStudent(m.getSid())) {
-			int stan = marksservice.getStandard(m.getSid());
-			int prom = studentclassservice.getPromotion(m.getSid());
-			m.setStandard(prom);
-			o.info("we are updating the standard ");
-		}
-		//checking the student result and updating the promotion field
-		
-		
-		
-		
-		
-		marksdao.save(m);
-		return new ResponseEntity<>("Marks added succesfull : "+m.getMid(),HttpStatus.OK);
 	}
-	
-	
-	
-	
 	
 	
 	
