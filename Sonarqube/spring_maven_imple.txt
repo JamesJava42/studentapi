@@ -1,0 +1,47 @@
+How simply we can use the sonarqube to implement the project and identify the structures issues.
+
+steps:
+    Installations:
+       Reqired java :
+               Download the jdk and add PATH to the ENvironmentalveriable and save it.
+        Required Maven:
+               Download maven windows  from link: https://dlcdn.apache.org/maven/maven-4/4.0.0-alpha-4/binaries/apache-maven-4.0.0-alpha-4-bin.zip
+               set the environmental path variable just like java adding the variable : MAVEN   adding the path :  %MAVEN%\bin 
+               check from terminal : $ mvn -version.
+
+               changing the .xml file in maven to set the sonar plugins:
+                    
+<settings>
+    <pluginGroups> <pluginGroup> 
+                    org.sonarsource.scanner.maven
+                    </pluginGroup>
+    </pluginGroups>
+    <profiles>  <profile> <id> sonar</id>
+               <activation>  
+                       <properties> 
+                         <sonar.host.url> 
+                            http://localhost:9000
+                               
+                          </sonar.host.url>
+                        </properties> 
+             </activation>
+    </profiles>
+</settings>
+
+
+       sonarcube website:
+            link : http://localhost:9000 -- > login through password default is (admin,admin) 
+            manually add new project -- > set name of token --> name of hte project -- > copy the generated token make the token is set No Expiration for prctical usage.
+            (maven)
+
+       
+        run :
+            $ mvn clean install
+            change the working directory to the project folder (which we want to build report)
+            generate token(sonarcube website) from the sonarqube site for the project setup
+            $mvn mvn clean install
+            mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar(use latest vesrsion)
+            mvn  sonar:sonar -Dsonar.login=(generated token) 
+       
+    
+

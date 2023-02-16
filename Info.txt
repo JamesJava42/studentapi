@@ -1,0 +1,33 @@
+Amazon EC2: (Amazon Elastic CLoud Compute) is a web service provide secure ,resizable Compute capacity in the cloud.to make web-scale computing easier fro developers.
+           THis EC2 instaces take less time to boot , scale capacity up and down , provide complete controle on the resorces , allowing  pay on capacity , which helps the developers and admin with failure resilent applications and isolate them from the failure scenarios.
+           Instance Types:
+                    On-Demand Instances:
+                    Spot Instances:
+                    Reserved Instances:
+                    Saving Plans:
+                    Dedicated Hosts:
+            Amazon EC2 Auto-Scaling: 
+                       maintain Application Availability and automatically add/remove instances based on condions we define.
+                       It has Dynamic(response to changeing demand) and Predictive(schedule the right no.of instances) Scaling features, to fasten the application.
+                    EC2 Image Builder:
+                        simplifies the Building ,testing , and deployment in VM's and Container images for on-premise usages.
+                        MakingVm's and  images upto to date  is time consuming , error-prone, Currently the developers either do manually update and snapshot AM's or using automation scripts to make the image up-to data.
+                               But, EC2 IB reduces all developer efforts by providing the interface ,built-in automation and security settings.
+                        With EC2 IB , No minimal setups for updating the image nor to using automated pipeline.
+                    Lightsail:
+                        Easiest way to amnage the Virtual Private servers  with AWS.
+                        everything need to start a project(a VM,SSD-storage, data-transfer,DNS maangement and static IP..).
+                    AppRunner:
+                        fully managed service to deploy the containerized Web applications and API's at scale and no prior experience.
+                        Mostly, We dont need to spend time on sperver and traffice balencing , cut time to focus on applicaiton.
+                        with an image / source code , it attomaticallly build and deploy the application.
+
+                    Batch:
+                       to work on batch processing jobs effectively.
+
+                    Elastic Beanstalk:
+                        Its an easy to use service for deploying and scaling the web-applications. We just need to 
+                                  need to upload the code then the BS atomatically handels the deployment and mange the (capacity,health,scalling ,loadBalencing..).
+                    Fargate:
+                        It's a compute engine foe EC2 alloes to run the containers with out having mange of servers and clusters.
+                        helps in choosing the servers types and scaling of clusters 
