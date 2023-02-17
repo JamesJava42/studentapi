@@ -15,10 +15,10 @@ public class Marksservice {
 	@Autowired
 	 Marksdao marksdao;
 	
-	@Autowired
-	Studentdao studentdao;
-	@Autowired
-	Studentservice ss;
+//	@Autowired
+//	Studentdao studentdao;
+//	@Autowired
+//	Studentservice ss;
 	
 	
 	

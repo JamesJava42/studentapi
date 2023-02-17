@@ -34,7 +34,6 @@ import com.relation.hibernate.view.Response;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.websocket.server.PathParam;
 @RestController
-@Repository("/")
 public class Requestclass {
 	@Autowired
 	Studentdao studentdao;
@@ -57,7 +56,7 @@ public class Requestclass {
 	Logger log = LoggerFactory.getLogger(Requestclass.class);
 	
 	
-	@GetMapping("students")
+	@GetMapping("/students")
 	public ResponseEntity<?> getStudents(){
 		List<Student> out  = studentdao.findAll();
 		
@@ -76,7 +75,7 @@ public class Requestclass {
 	}
 	
 	
-	@GetMapping("studentid")
+	@GetMapping("/studentid")
 	public ResponseEntity<?> getById(@RequestParam int id){
 		if(studentdao.findById(id) != null) {
 			List<Response> s = sdao.getStudent1(id);
@@ -92,6 +91,13 @@ public class Requestclass {
 		}
 		
 		return new ResponseEntity<>("No student exist ",HttpStatus.OK);
+	}
+	
+	
+	@PostMapping("/userdetails")
+	public ResponseEntity<?> addUserValues(@RequestBody User user){
+		repo.save(user);
+		return new ResponseEntity<>("User added",HttpStatus.OK);
 	}
 	
 	@GetMapping("/login")

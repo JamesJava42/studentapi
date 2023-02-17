@@ -3,26 +3,33 @@ package com.relation.hibernate.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.relation.hibernate.dao.Marksdao;
 import com.relation.hibernate.dao.Studentclassdao;
 import com.relation.hibernate.dao.Studentdao;
+import com.relation.hibernate.exception.StudentExistException;
 import com.relation.hibernate.model.Clas;
 import com.relation.hibernate.model.Marks;
 import com.relation.hibernate.model.Student;
+import com.relation.hibernate.model.Studentclass;
 @Service
+@Component
 public class Studentservice {
 	
-	@Autowired
-	static Studentdao dao;
-	@Autowired
-	static Marksdao mdao;
 	
 	@Autowired
-	static Studentclassdao scdao;
+	 Marksdao mdao;
 	
-	public static Marks getMarks(int id) {
+	@Autowired
+	 Studentclassdao scdao;
+	
+	@Autowired
+	
+   Studentdao studentdao;
+	
+	public  Marks getMarks(int id) {
 		
 		if(mdao.findById(id) != null ) {
 			
@@ -32,12 +39,30 @@ public class Studentservice {
 		else {
 			return null;
 		}
+	
 		
 		
 		
 	}
 	
-	public static Boolean isPromoted(int id) {
+	public int isExist(int  studentId) {
+		System.out.println("Entered lto the isExist method ");
+		List<Student> out = studentdao.getStudent(studentId);
+
+		if(!out.isEmpty()) {
+			return 0;
+		}else {
+			//List<Student> out =  studentdao.getStudent(studentId);
+			throw new StudentExistException("Already Exists");
+		}
+		
+			
+		}
+		
+		
+	
+	
+	public Boolean isPromoted(int id) {
 		if(mdao.findById( id) != null) {
 			Marks data = mdao.getById(id);
 			if(data.getGpa() > 7) {
@@ -53,30 +78,7 @@ public class Studentservice {
 	}
 	
 
-	 public static void main(String []args) {
-		 Student objs = new Student();
-		 objs.setName("Rakesh");
-		 objs.setCity("cumbum");
-		 objs.setAge(11);
-		 
-		 Clas objc = new Clas();
-		 objc.setStandard(8);
-		 
-		 dao.save(objs);
-		 
-		 
-		 
-		 
-		
-		
-		 
-		 
-		 
-		 
-		 
-		 
-	 }
-	
+	 
 	
 
 }
