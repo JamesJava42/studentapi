@@ -1,0 +1,14 @@
+DROP TABLE IF EXISTS employee;
+DROP TABLE IF EXISTS employee_health_data;
+
+CREATE TABLE employee(
+   emp_id  ,
+   emp_name  varchar(10),
+   emp_city varchar(10)
+   );
+
+ CREATE TABLE employe_health_date(
+    ins_id INTEGER,
+    ins_provider VARCHAR(10),
+    ins_amount INTEGER
+ );
